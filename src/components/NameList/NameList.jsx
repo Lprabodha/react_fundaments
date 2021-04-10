@@ -53,13 +53,12 @@ const namelistComponent = ()=> {
 
     return(
         <React.Fragment>
-            <h1>Name List</h1>
-            <hr />
-            <ul>
-                {/* call to namelist function(0,1,2) is array name */}
-            {namelistComponent()}
-       
-            </ul>
+           
+           <div className="container mt-3">
+                <ul className="list-group">{namelistComponent()}</ul>
+           </div>
+
+         
         </React.Fragment>
     );
 }
