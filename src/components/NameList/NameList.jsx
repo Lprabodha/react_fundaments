@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import NameListItem from './NameListItem';
 
 function NameList(){
 
+    const [loadData,setLoadData]= useState(new Date());
     const [NameList, setNameList] = useState([
         {
             id: 1,
@@ -31,6 +32,15 @@ function NameList(){
     ]);
 
 
+useEffect(() =>{
+    fetch("https://randomuser.me/api").then(response =>{
+     return response.json();
+    }).then(responseDate =>{
+  setNameList((NameList) =>[...NameList,responseDate.results[0]]);
+    });
+},[loadData]);
+
+
 const namelistComponent = ()=> {
     return(
         NameList.map((aName) => {
@@ -50,18 +60,7 @@ const namelistComponent = ()=> {
 }
 
 const addUserHandler = () =>{
-    const newUser = {
-        id: 4,
-        name: { title: 'mrs', first: 'Renuka', last: 'Malkanthi' },
-        location: { city: 'Jaffna' },
-        email: 'vta@gmail.com',
-        dob: { date: '1990-07-10', age: '31', },
-        picture: { medium: "https://randomuser.me/api/portraits/med/women/37.jpg", },
-    };
-
-    // setNameList((NameList) => NameList.concat(newUser));
-    // Spread Operator
-    setNameList((NameList) => [...NameList,newUser]);
+setLoadData(new Date());
 };
 
 
