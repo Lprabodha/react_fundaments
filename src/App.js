@@ -6,6 +6,7 @@ import NameList from './components/pages/NameList/NameList';
 import HeaderBar from './components/HeaderBar/HeaderBar';
 import Home from './components/pages/Home/Home';
 import About from './components/pages/About/About';
+import NameListC from './components/pages/NameListC/NameListC';
 
 
 function App(){
@@ -19,6 +20,9 @@ function App(){
       </Route>
       <Route path="/namelist">
       <NameList />
+      </Route>
+       <Route path="/namelistc">
+      <NameListC />
       </Route>
       <Route path="/">
           <Home/>
